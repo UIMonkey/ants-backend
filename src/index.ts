@@ -2,28 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
-
-const ants = [
-    {
-        name: 'Dave',
-        colony: 'red'
-    },
-    {
-        name: 'Steve',
-        colony: 'blue'
-    },
-
-]
+import { resolvers } from './resolvers';
 
 const typeDefs = `
   type Query { ants: [Ant] }
   type Ant { name: String, colony: String }
 `;
-
-// The resolvers
-const resolvers = {
-  Query: { ants: () => ants },
-};
 
 // Put together a schema
 const schema = makeExecutableSchema({
