@@ -2,7 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
-import { resolvers } from './resolvers';
+import { resolvers } from './resolvers/resolvers';
+import cors from 'cors';
 
 const typeDefs = `
   type Query { ants: [Ant] }
@@ -18,6 +19,9 @@ const schema = makeExecutableSchema({
 // Initialize the app
 const app = express();
 
+// Enable Cors policy
+app.use(cors());
+
 // The GraphQL endpoint
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
@@ -25,6 +29,6 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // Start the server
-app.listen(3000, () => {
-  console.log('Go to http://localhost:3000/graphiql to run queries! Nah though');
+app.listen(4200, () => {
+  console.log('Go to http://localhost:4200/graphiql to run queries! Nah though');
 });

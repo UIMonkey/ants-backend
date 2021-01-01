@@ -30,7 +30,7 @@ export interface IAnt {
     colony: Colony;
 }
 
-export class Ant implements IAnt {
+export class AntObject implements IAnt {
     name;
     health;
     speed = 0;
