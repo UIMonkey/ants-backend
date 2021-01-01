@@ -1,3 +1,5 @@
+let antId = 1;
+
 export interface IPosition {
     latitude: number;
     longitude: number;
@@ -21,6 +23,7 @@ export enum Colony {
 }
 
 export interface IAnt {
+    id: number;
     name: string;
     location: IPosition;
     health: number;
@@ -30,7 +33,8 @@ export interface IAnt {
     colony: Colony;
 }
 
-export class AntObject implements IAnt {
+export class Ant implements IAnt {
+    id;
     name;
     health;
     speed = 0;
@@ -44,5 +48,6 @@ export class AntObject implements IAnt {
         this.health = health;
         this.heading = heading;
         this.colony = colony;
+        this.id = antId++;
     }
 }
