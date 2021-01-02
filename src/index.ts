@@ -5,7 +5,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { resolvers } from './resolvers/resolvers';
 import cors from 'cors';
 import { typeDefs } from './schemas/schema';
-import { moveAnts } from './model';
+import { healthCheck, moveAnts } from './model';
 
 const port = 4200;
 
@@ -33,4 +33,9 @@ app.listen({ port }, () => {
 });
 
 // Start the ticking
-setInterval(moveAnts, 500);
+setInterval(() => {
+  // Move the ants
+  moveAnts();
+  // Check their health
+  healthCheck()
+}, 500);

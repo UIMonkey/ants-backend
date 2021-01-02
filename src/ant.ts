@@ -1,4 +1,3 @@
-let antId = 1;
 
 export interface IPosition {
     latitude: number;
@@ -29,6 +28,9 @@ export interface IAnt {
     health: number;
     destination?: IPosition;
     heading: number;
+    /**
+     * Speed can be between 0 and 50
+     */
     speed: number;
     colony: Colony;
 }
@@ -37,17 +39,18 @@ export class Ant implements IAnt {
     id;
     name;
     health;
-    speed = 0;
+    speed;
     heading;
     colony;
     location = new Position();
     destination = new Position();
 
-    constructor(name='', health=100, heading=90, colony=Colony.Blue) {
+    constructor(id: number, name='', health=100, heading=90, colony=Colony.Blue, speed = 0) {
         this.name = name;
         this.health = health;
         this.heading = heading;
         this.colony = colony;
-        this.id = antId++;
+        this.speed = speed;
+        this.id = id;
     }
 }

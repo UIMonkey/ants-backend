@@ -23,7 +23,7 @@ export const typeDefs = `
   type Ant {
     id: Int!
     name: String!
-    health: Int
+    health: Float
     heading: Float
     speed: Float
     colony: String
