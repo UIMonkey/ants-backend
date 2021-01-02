@@ -5,6 +5,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { resolvers } from './resolvers/resolvers';
 import cors from 'cors';
 import { typeDefs } from './schemas/schema';
+import { moveAnts } from './model';
 
 const port = 4200;
 
@@ -30,3 +31,6 @@ app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.listen({ port }, () => {
   console.log(`Go to http://localhost:${port}/graphiql to run queries!`);
 });
+
+// Start the ticking
+setInterval(moveAnts, 500);

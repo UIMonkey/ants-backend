@@ -15,4 +15,12 @@ const generateAnts = (numberOfAnts: number): IAnt[] => {
     return antArray;
 }
 
-export const ants: IAnt[] = generateAnts(5);
+
+export const ants: IAnt[] = generateAnts(1);
+
+// Function to move the ants
+export const moveAnts = () => {
+    ants.forEach((ant: IAnt) => {
+        ant.location.latitude += 0.008;
+    });
+}
